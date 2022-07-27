@@ -17,10 +17,11 @@
     }
   },
   "require": {
-    "php": "^7.4 || ^8.0",
-    "ext-json": "*",
+    "badges/poser": "^2.3",
     "ext-curl": "*",
-    "badges/poser": "^2.3"
+    "ext-gd": "*",
+    "ext-json": "*",
+    "php": "^7.4 || ^8.0"
   },
   "config": {
     "allow-plugins": {
