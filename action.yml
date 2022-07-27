@@ -34,5 +34,4 @@ runs:
       env:
         REPOSITORY: ${{ github.repository }}
       run: |
-        php index.php > ./bagde.svg
-        echo "::set-output name=bagde::$(bagde.svg)"
+        echo "::set-output name=bagde::$(php index.php)"
