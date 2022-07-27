@@ -23,15 +23,9 @@ runs:
         extensions: gd
 
     - name: Run composer
-      uses: nick-zh/composer-php@master
-
-    - name: add ext
-      shell: bash
-      run: composer require "ext-gd:*" --ignore-platform-reqs
-
-    - name: install composer
-      shell: bash
-      run: composer install
+      uses: ErickGomez98/composer@master
+      with:
+        action: 'install'
 
     - name: Generate badge
       id: generate-bagde
