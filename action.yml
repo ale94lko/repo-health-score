@@ -21,10 +21,10 @@ runs:
       with:
         php-version: ${{ inputs.php-version }}
 
-    - name: Install Composer
-      uses: MilesChou/composer-action@master
+    - name: Run composer
+      uses: nick-zh/composer-php@master
       with:
-        args: install
+        action: 'install -oa'
 
     - name: Generate badge
       id: generate-bagde
