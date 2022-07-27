@@ -24,8 +24,6 @@ runs:
 
     - name: Run composer
       uses: php-actions/composer@v6
-      with:
-        command: --ignore-platform-reqs=ext-gd
 
     - name: Generate badge
       id: generate-bagde
