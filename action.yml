@@ -24,12 +24,14 @@ runs:
 
     - name: Run composer
       uses: nick-zh/composer-php@master
-      with:
-        action: 'install -oa'
 
-    - name: Test
+    - name: add ext
       shell: bash
-      run: apt-get install php8.1.8-gd
+      run: composer require "ext-gd:*" --ignore-platform-reqs
+
+    - name: install composer
+      shell: bash
+      run: composer install
 
     - name: Generate badge
       id: generate-bagde
