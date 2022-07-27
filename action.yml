@@ -23,9 +23,7 @@ runs:
         extensions: gd
 
     - name: Run composer
-      uses: ErickGomez98/composer@master
-      with:
-        action: 'install'
+      uses: php-actions/composer@v6
 
     - name: Generate badge
       id: generate-bagde
