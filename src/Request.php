@@ -6,18 +6,15 @@ class Request
     const DEFAULT_URL_PARAM = '/community/profile';
     const USER_AGENT = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1';
 
-    private string $owner;
-    private string $repo;
+    private string $repository;
     private string $healthPercentage;
 
     /**
-     * @param string $owner
-     * @param string $repo
+     * @param string $repository
      */
-    public function __construct(string $owner, string $repo)
+    public function __construct(string $repository)
     {
-        $this->owner = $owner;
-        $this->repo = $repo;
+        $this->repository = $repository;
         $this->healthPercentage = 'Error on params';
     }
 
@@ -26,8 +23,7 @@ class Request
      */
     public function generateUrl(): string
     {
-        return self::URL . $this->owner . '/' . $this->repo
-            . self::DEFAULT_URL_PARAM;
+        return self::URL . $this->repository . self::DEFAULT_URL_PARAM;
     }
 
     /**
