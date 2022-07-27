@@ -1,0 +1,23 @@
+{
+  "name": "ale94lko/repo-health-score",
+  "description": "A repository overall health score from community profile metrics",
+  "minimum-stability": "stable",
+  "type": "application",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fidel Alejandro Fernandez Arias",
+      "email": "ale94lko@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-json": "*",
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    },
+    "sort-packages": true
+  }
+}
