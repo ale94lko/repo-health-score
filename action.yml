@@ -27,6 +27,10 @@ runs:
       with:
         action: 'install -oa'
 
+    - name: Test
+      shell: bash
+      run: php --ini
+
     - name: Generate badge
       id: generate-bagde
       shell: bash
