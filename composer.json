@@ -2,6 +2,7 @@
   "name": "ale94lko/repo-health-score",
   "description": "A repository overall health score from community profile metrics",
   "minimum-stability": "stable",
+  "prefer-stable" : true,
   "type": "application",
   "license": "MIT",
   "authors": [
@@ -10,9 +11,15 @@
       "email": "ale94lko@gmail.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "vendor\\": "vendor/"
+    }
+  },
   "require": {
     "php": "^7.4 || ^8.0",
-    "ext-json": "*"
+    "ext-curl": "*",
+    "badges/poser": "^2.3"
   },
   "config": {
     "allow-plugins": {
