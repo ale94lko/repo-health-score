@@ -13,9 +13,5 @@ jobs:
       - name: Repo Health Score
         uses: ale94lko/repo-health-score@main
 
-      - uses: crazy-max/ghaction-github-pages@v3.0.0
-        with:
-          target_branch: output
-          build_dir: /
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: $GITHUB_ACTION_PATH/deploy.sh
+        shell: bash
