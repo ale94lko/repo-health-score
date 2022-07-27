@@ -21,6 +21,11 @@ runs:
       with:
         php-version: ${{ inputs.php-version }}
 
+    - name: Install Composer
+      uses: MilesChou/composer-action@master
+      with:
+        args: install
+
     - name: Generate badge
       id: generate-bagde
       shell: bash
