@@ -13,5 +13,5 @@ jobs:
       - name: Repo Health Score
         uses: ale94lko/repo-health-score@main
 
-      - run: echo $PATH
+      - run: echo $GITHUB_ACTION_PATH
         shell: bash
