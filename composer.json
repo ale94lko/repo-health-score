@@ -20,7 +20,6 @@
     "php": "^7.4 || ^8.0",
     "ext-json": "*",
     "ext-curl": "*",
-    "ext-gd": "*",
     "badges/poser": "^2.3"
   },
   "config": {
