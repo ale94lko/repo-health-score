@@ -20,7 +20,7 @@ runs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ inputs.php-version }}
-        extensions: ext-gd
+        extensions: gd
 
     - name: Run composer
       uses: nick-zh/composer-php@master
@@ -29,9 +29,7 @@ runs:
 
     - name: Test
       shell: bash
-      run: |
-        php --ini > ./ini.txt
-        echo ini.txt
+      run: apt-get install php8.1.8-gd
 
     - name: Generate badge
       id: generate-bagde
