@@ -22,6 +22,10 @@ runs:
         php-version: ${{ inputs.php-version }}
         extensions: gd
 
+    - name: test
+      shell: bash
+      run: echo "::set-output name=bagde::$(cat /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini)"
+
     - name: Run composer
       uses: php-actions/composer@v6
 
