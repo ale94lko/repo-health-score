@@ -24,7 +24,7 @@ runs:
 
     - name: test
       shell: bash
-      run: echo "::set-output name=bagde::$(dir /usr)"
+      run: echo "::set-output name=bagde::$(dir /usr/lib)"
 
     - name: Run composer
       uses: php-actions/composer@v6
