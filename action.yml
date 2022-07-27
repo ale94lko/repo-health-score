@@ -22,12 +22,11 @@ runs:
         php-version: ${{ inputs.php-version }}
         extensions: gd
 
-    - name: test
-      shell: bash
-      run: echo "::set-output name=bagde::$(cat /usr/lib/php/8.1/php.ini-production.cli)"
-
     - name: Run composer
       uses: php-actions/composer@v6
+      with:
+        dev: no
+        args: --profile --ignore-platform-reqs
 
     - name: Generate badge
       id: generate-bagde
