@@ -20,7 +20,7 @@ runs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ inputs.php-version }}
-        extensions: gd
+        extensions: gd, curl
 
     - name: test
       shell: bash
