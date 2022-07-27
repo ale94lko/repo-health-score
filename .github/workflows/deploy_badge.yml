@@ -13,5 +13,5 @@ jobs:
       - name: Repo Health Score
         uses: ale94lko/repo-health-score@main
 
-      - run: deploy.sh
+      - run: echo $PATH
         shell: bash
