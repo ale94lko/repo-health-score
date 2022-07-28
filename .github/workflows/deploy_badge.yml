@@ -12,3 +12,11 @@ jobs:
 
       - name: Get Repo Health Score Badge
         uses: ale94lko/repo-health-score@main
+
+      - name: Deploy badge
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
