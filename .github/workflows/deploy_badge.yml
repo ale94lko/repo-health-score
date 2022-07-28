@@ -25,6 +25,5 @@ jobs:
           git checkout --orphan output
           git reset --mixed
           git add badge.svg
-          git clean -d -f -x
           git commit -m "deploy"
           git push -f "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" output
