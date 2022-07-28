@@ -10,10 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Repo Health Score
+      - name: Get Repo Health Score Badge
         uses: ale94lko/repo-health-score@main
 
-      - shell: bash
+      - name: Deploy Repo Health Score Badge
+        shell: bash
         run: |
           set -e
 
@@ -22,7 +23,9 @@ jobs:
           git config user.name "github-actions[bot]"
 
           git checkout --orphan output
+          git add badge.svg
           git stash push -- badge.svg
+          git add -A
           git reset --hard
           git stash pop
           git commit -m "deploy"
