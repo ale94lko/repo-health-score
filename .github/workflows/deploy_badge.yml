@@ -23,10 +23,8 @@ jobs:
           git config user.name "github-actions[bot]"
 
           git checkout --orphan output
+          git reset --mixed
           git add badge.svg
-          git stash push -- badge.svg
-          git add -A
-          git reset --hard
-          git stash pop
+          git clean -d -f -x
           git commit -m "deploy"
           git push -f "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" output
