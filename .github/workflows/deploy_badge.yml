@@ -12,18 +12,3 @@ jobs:
 
       - name: Get Repo Health Score Badge
         uses: ale94lko/repo-health-score@main
-
-      - name: Deploy Repo Health Score Badge
-        shell: bash
-        run: |
-          set -e
-
-          git init
-          git config user.email "github-action[bot]@noreply.github.com"
-          git config user.name "github-actions[bot]"
-
-          git checkout --orphan output
-          git reset --mixed
-          git add badge.svg
-          git commit -m "deploy"
-          git push -f "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" output
