@@ -5,6 +5,9 @@ branding:
   icon: 'check-circle'
   color: 'green'
 inputs:
+  token:
+    description: Github token to grant access to deploy the badge
+    required: true
   php-version:
     description: 'Version of PHP'
     required: false
@@ -33,3 +36,11 @@ runs:
       env:
         REPOSITORY: ${{ github.repository }}
       run: php index.php
+
+    - name: Deploy badge
+      uses: crazy-max/ghaction-github-pages@v3
+      with:
+        target_branch: output
+        build_dir: dist
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
