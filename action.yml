@@ -12,6 +12,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: ale94lko/repo-health-score
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
