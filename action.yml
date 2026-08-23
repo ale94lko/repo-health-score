@@ -7,7 +7,8 @@ branding:
 inputs:
   token:
     description: Github token to grant access to the API and deploy the badge
-    required: true
+    required: false
+    default: ''
   php-version:
     description: 'Version of PHP'
     required: false
@@ -31,13 +32,13 @@ runs:
       working-directory: ${{ github.action_path }}
       env:
         REPOSITORY: ${{ github.repository }}
-        GITHUB_TOKEN: ${{ inputs.token }}
+        GITHUB_TOKEN: ${{ inputs.token || github.token }}
       run: php index.php
 
     - name: Deploy badge
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ inputs.token }}
+        github_token: ${{ inputs.token || github.token }}
         publish_dir: ${{ github.action_path }}/dist
         publish_branch: output
         force_orphan: true
