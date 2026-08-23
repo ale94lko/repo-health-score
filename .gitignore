@@ -1,4 +1,4 @@
 .idea/
 vendor/
-
-composer.lock
+dist/
+test_request.php

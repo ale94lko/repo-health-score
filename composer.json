@@ -12,9 +12,9 @@
     }
   ],
   "autoload": {
-    "psr-4": {
-      "vendor\\": "vendor/"
-    }
+    "classmap": [
+      "src/"
+    ]
   },
   "require": {
     "badges/poser": "^2.3",

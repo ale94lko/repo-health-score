@@ -6,41 +6,38 @@ branding:
   color: 'green'
 inputs:
   token:
-    description: Github token to grant access to deploy the badge
+    description: Github token to grant access to the API and deploy the badge
     required: true
   php-version:
     description: 'Version of PHP'
     required: false
-    default: 'latest'
+    default: '8.3'
 runs:
   using: 'composite'
   steps:
-    - uses: actions/checkout@v2
-      with:
-        repository: ale94lko/repo-health-score
-
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ inputs.php-version }}
-        extensions: gd
+        extensions: gd, curl, json
 
-    - name: Run composer
-      uses: php-actions/composer@v6
-      with:
-        dev: no
-        args: --profile --ignore-platform-reqs
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: composer install --no-dev --prefer-dist --no-interaction --no-progress
 
     - name: Generate badge
       shell: bash
+      working-directory: ${{ github.action_path }}
       env:
         REPOSITORY: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ inputs.token }}
       run: php index.php
 
     - name: Deploy badge
-      uses: crazy-max/ghaction-github-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        target_branch: output
-        build_dir: dist
-      env:
-        GITHUB_TOKEN: ${{ inputs.token }}
+        github_token: ${{ inputs.token }}
+        publish_dir: ${{ github.action_path }}/dist
+        publish_branch: output
+        force_orphan: true

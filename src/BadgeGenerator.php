@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use PUGX\Poser\Poser;
 use PUGX\Poser\Render\SvgFlatRender;
 use PUGX\Poser\Render\SvgFlatSquareRender;
@@ -8,15 +10,12 @@ use PUGX\Poser\Render\SvgPlasticRender;
 
 final class BadgeGenerator
 {
-    const LABEL = 'health score';
-    const BADGE_STYLE = 'flat';
+    private const LABEL = 'health score';
+    private const BADGE_STYLE = 'flat';
 
     private Poser $poser;
     private string $healthPercentage;
 
-    /**
-     * @param string $healthPercentage
-     */
     public function __construct(string $healthPercentage)
     {
         $this->poser = new Poser([
@@ -28,9 +27,6 @@ final class BadgeGenerator
         $this->healthPercentage = $healthPercentage;
     }
 
-    /**
-     * @return string
-     */
     public function generate(): string
     {
         return (string) $this->poser->generate(
@@ -41,29 +37,26 @@ final class BadgeGenerator
         );
     }
 
-    /**
-     * @return string
-     */
     private function getColor(): string
     {
-        switch (intval(intval($this->healthPercentage) / 25)) {
-            case 4:
-                $color = 'blue';
-                break;
+        $score = (int) $this->healthPercentage;
 
-            case 3:
-                $color = 'green';
-                break;
-
-            case 2:
-                $color = 'yellow';
-                break;
-
-            default:
-                $color = 'red';
-                break;
+        if ($score >= 100) {
+            return 'brightgreen';
         }
 
-        return $color;
+        if ($score >= 75) {
+            return 'green';
+        }
+
+        if ($score >= 50) {
+            return 'yellow';
+        }
+
+        if ($score >= 25) {
+            return 'orange';
+        }
+
+        return 'red';
     }
 }
